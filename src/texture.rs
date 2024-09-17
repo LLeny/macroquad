@@ -719,6 +719,11 @@ impl Texture2D {
         ctx.texture_read_pixels(self.raw_miniquad_id(), &mut image.bytes);
         image
     }
+
+    pub fn update_from_bytes(&self, bytes: &[u8]) {
+        let ctx = get_quad_context();
+        ctx.texture_update(self.raw_miniquad_id(), bytes);
+    }
 }
 
 pub(crate) struct Batcher {
